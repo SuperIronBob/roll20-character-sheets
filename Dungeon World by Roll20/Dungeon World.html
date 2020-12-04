@@ -133,19 +133,19 @@
 	<div class="roll-mods hold-box">
 		<div class="toggler">
 			<label>
-				<input type="radio" class="roll-normal" name="attr_rollforward" value="0" checked="checked"><span data-i18n="normal">Normal</span>
+				<input type="radio" class="roll-normal" name="attr_rollwithforward" value="2d6" checked="checked"><span data-i18n="normal">Normal</span>
 			</label>
 			<label>
-				<input type="radio" class="roll-plusone" name="attr_rollforward" value="1"><span data-i18n="plus-one-forward">+1 Forward</span>
+				<input type="radio" class="roll-plusone" name="attr_rollwithforward" value="3d6dl"><span data-i18n="plus-one-forward">+1 Forward</span>
 			</label>
 			<label>
-				<input type="radio" class="roll-minusone" name="attr_rollforward" value="-1"><span data-i18n="minus-one-forward">-1 Forward</span>
+				<input type="radio" class="roll-minusone" name="attr_rollwithforward" value="3d6dh"><span data-i18n="minus-one-forward">-1 Forward</span>
 			</label>
 			<label>
-				<input type="radio" class="roll-query" name="attr_rollforward" value="?{Modifier|0}"><span data-i18n="query">Query</span>
+				<input type="radio" class="roll-query" name="attr_rollwithforward" value="?{Modifier|2d6}"><span data-i18n="query">Query</span>
 			</label>
 			<label>
-				<input type="radio" class="roll-query" name="attr_rollforward" value="@{hold}"><span data-i18n="hold:">Hold:</span>
+				<input type="radio" class="roll-query" name="attr_rollhold" value="@{hold}"><span data-i18n="hold:">Hold:</span> <!-- todo what is hold? -->
 			</label>
 			<input type="number" name="attr_hold" value="0" />
 		</div>
@@ -223,7 +223,7 @@
 					</div>
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
-					<button type="roll" name="roll_strength" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Strength}} {{result=[[@{rolltype} + @{strength_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+					<button type="roll" name="roll_strength" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Strength}} {{result=[[@{rollwithforward} + @{strength_mod} + @{global_ongoing}[global ongoing]]]}}">
 						<br />
 						<span class="dw-statname-short" data-i18n="str-u">STR</span>
 						<br />
@@ -244,7 +244,7 @@
 					</div>
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
-					<button type="roll" name="roll_dexterity" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Dexterity}} {{result=[[@{rolltype} + @{dexterity_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+					<button type="roll" name="roll_dexterity" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Dexterity}} {{result=[[@{rollwithforward} + @{dexterity_mod} + @{global_ongoing}[global ongoing]]]}}">
 						<br />
 						<span class="dw-statname-short" data-i18n="dex-u">DEX</span>
 						<br />
@@ -265,7 +265,7 @@
 					</div>
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
-					<button type="roll" name="roll_constitution" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Constitution}} {{result=[[@{rolltype} + @{constitution_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+					<button type="roll" name="roll_constitution" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Constitution}} {{result=[[@{rollwithforward} + @{constitution_mod} + @{global_ongoing}[global ongoing]]]}}">
 						<br />
 						<span class="dw-statname-short" data-i18n="con-u">CON</span>
 						<br />
@@ -286,7 +286,7 @@
 					</div>
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
-					<button type="roll" name="roll_intelligence" value="&{template:dwgeneral} {{charname=@{character_name}}}{{rollname=Intelligence}} {{result=[[@{rolltype} + @{intelligence_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+					<button type="roll" name="roll_intelligence" value="&{template:dwgeneral} {{charname=@{character_name}}}{{rollname=Intelligence}} {{result=[[@{rollwithforward} + @{intelligence_mod} + @{global_ongoing}[global ongoing]]]}}">
 						<br />
 						<span class="dw-statname-short" data-i18n="int-u">INT</span>
 						<br />
@@ -307,7 +307,7 @@
 					</div>
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
-					<button type="roll" name="roll_wisdom" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Wisdom}} {{result=[[@{rolltype} + @{wisdom_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+					<button type="roll" name="roll_wisdom" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Wisdom}} {{result=[[@{rollwithforward} + @{wisdom_mod} + @{global_ongoing}[global ongoing]]]}}">
 						<br />
 						<span class="dw-statname-short" data-i18n="wis-u">WIS</span>
 						<br />
@@ -328,7 +328,7 @@
 					</div>
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
-					<button type="roll" name="roll_charisma" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Charisma}} {{result=[[@{rolltype} + @{charisma_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+					<button type="roll" name="roll_charisma" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Charisma}} {{result=[[@{rollwithforward} + @{charisma_mod} + @{global_ongoing}[global ongoing]]]}}">
 						<br />
 						<span class="dw-statname-short" data-i18n="cha-u">CHA</span>
 						<br />
@@ -434,7 +434,7 @@
 		<div class="mid-content moves">
 			<fieldset class="repeating_moves">
 				<div class="move-main">
-					<button type="roll" name="roll_move" value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[@{rolltype} + @{movestat} +@{movemod} + (@{rollforward})[forward] + @{global_ongoing}[ongoing global]]]}} {{details=@{movedetails}}}">
+					<button type="roll" name="roll_move" value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[@{rollwithforward} + @{movestat} +@{movemod} + @{global_ongoing}[ongoing global]]]}} {{details=@{movedetails}}}">
 					<span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
 					</button>
 					<input class="expander expand-move" type="checkbox" name="attr_expand_move" value="1" title="Details" checked="checked"  />
@@ -2882,7 +2882,7 @@ on("change:repeating_gmods:enable_modifier change:repeating_gmods:ongoing_on cha
 	});
 });
 
-// Set 1d6+1d8 (barbarian dice)     
+// Set 1d6+1d8 (barbarian dice)  // todo how does this work with advantage style forward house rule?   
 on("change:repeating_gmods:enable_modifier change:repeating_gmods:barbdice_on change:repeating_gmods:gmod_rolltype", function() {
 	getAttrs(["repeating_gmods_enable_modifier", "repeating_gmods_barbdice_on", "repeating_gmods_gmod_rolltype", "rolltype"], function(v) {
 		if (v.repeating_gmods_barbdice_on > 0 && v.repeating_gmods_enable_modifier > 0) {
